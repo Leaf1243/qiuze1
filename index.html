@@ -1,0 +1,107 @@
+<!DOCTYPE html>  
+<html lang="ja">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>血圧クイズ</title>  
+    <style>  
+        body { font-family: Arial, sans-serif; }  
+        .quiz-container { margin: 20px; }  
+        .result { margin-top: 20px; font-weight: bold; }  
+    </style>  
+</head>  
+<body>  
+
+<div class="quiz-container">  
+    <h1>血圧に関するクイズ</h1>  
+    <form id="quiz-form">  
+        <div>  
+            <label>1. 血圧はどの主な2つの値で表されるか？</label><br>  
+            <input type="radio" name="q1" value="a">収縮期血圧と拡張期血圧<br>  
+            <input type="radio" name="q1" value="b">最大血圧と最小血圧<br>  
+            <input type="radio" name="q1" value="c">脈拍と収縮期血圧<br>  
+        </div>  
+        <div>  
+            <label>2. 健康的な血圧の範囲はどのくらいか？</label><br>  
+            <input type="radio" name="q2" value="a">90/60 mmHg - 120/80 mmHg<br>  
+            <input type="radio" name="q2" value="b">120/80 mmHg - 140/90 mmHg<br>  
+            <input type="radio" name="q2" value="c">140/90 mmHg以上<br>  
+        </div>  
+        <div>  
+            <label>3. 高血圧の主な原因はどれか？</label><br>  
+            <input type="radio" name="q3" value="a">遺伝<br>  
+            <input type="radio" name="q3" value="b">運動不足<br>  
+            <input type="radio" name="q3" value="c">ストレス<br>  
+            <input type="radio" name="q3" value="d">すべて<br>  
+        </div>  
+        <div>  
+            <label>4. どの食べ物が高血圧を引き起こす可能性があるか？</label><br>  
+            <input type="radio" name="q4" value="a">果物<br>  
+            <input type="radio" name="q4" value="b">塩分の多い食べ物<br>  
+            <input type="radio" name="q4" value="c">全粒穀物<br>  
+        </div>  
+        <div>  
+            <label>5. 血圧を下げるために有効な運動はどれか？</label><br>  
+            <input type="radio" name="q5" value="a">リフティング<br>  
+            <input type="radio" name="q5" value="b">有酸素運動<br>  
+            <input type="radio" name="q5" value="c">ヨガ<br>  
+        </div>  
+        <div>  
+            <label>6. 血圧が高いとどうなるか？</label><br>  
+            <input type="radio" name="q6" value="a">心臓病のリスクが高まる<br>  
+            <input type="radio" name="q6" value="b">視力が良くなる<br>  
+            <input type="radio" name="q6" value="c">疲れにくくなる<br>  
+        </div>  
+        <div>  
+            <label>7. 血圧を測定するためにはどこで測るか？</label><br>  
+            <input type="radio" name="q7" value="a">腕<br>  
+            <input type="radio" name="q7" value="b">足<br>  
+            <input type="radio" name="q7" value="c">喉<br>  
+        </div>  
+        <div>  
+            <label>8. 妊娠中に血圧が上昇することがあるのはどれか？</label><br>  
+            <input type="radio" name="q8" value="a">正常<br>  
+            <input type="radio" name="q8" value="b">異常<br>  
+        </div>  
+        <div>  
+            <label>9. 血圧に悪影響を及ぼす飲み物はどれか？</label><br>  
+            <input type="radio" name="q9" value="a">緑茶<br>  
+            <input type="radio" name="q9" value="b">コーヒー<br>  
+            <input type="radio" name="q9" value="c">水<br>  
+        </div>  
+        <div>  
+            <label>10. 血圧測定の最適なタイミングは？</label><br>  
+            <input type="radio" name="q10" value="a">食後<br>  
+            <input type="radio" name="q10" value="b">早朝<br>  
+            <input type="radio" name="q10" value="c">運動中<br>  
+        </div>  
+        <button type="button" onclick="submitQuiz()">送信</button>  
+    </form>  
+    <div class="result" id="result"></div>  
+</div>  
+
+<script>  
+const answers = ['a', 'a', 'd', 'b', 'b', 'a', 'a', 'b', 'b', 'b'];  
+
+function submitQuiz() {  
+    let score = 0;  
+    const form = document.forms['quiz-form'];  
+    
+    for (let i = 1; i <= 10; i++) {  
+        const question = form[`q${i}`];  
+        if (question) {  
+            for (let j = 0; j < question.length; j++) {  
+                if (question[j].checked && question[j].value === answers[i - 1]) {  
+                    score++;  
+                }  
+            }  
+        }  
+    }  
+    
+    const resultDiv = document.getElementById('result');  
+    resultDiv.textContent = `あなたのスコアは ${score}/10 です。`;  
+}  
+</script>  
+
+</body>  
+</html>
